@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>How British?</title>
-</head>
-<body>
-  <form>
-    Text <input type="text" name="text"><br>
-    <input type="submit" value="Submit">
-  </form>
-</body>
-  <script type="text/javascript" src="../analyzer.js"></script>
+  <head>
+    <title>How British?</title>
+    <script src="../node_modules/angular/angular.js" defer></script>
+    <script src="./angular/analyzer.js" defer></script>
+  </head>
+  <body ng-app="analyzer">
+    <div ng-controller="AnalyzerController">
+      <form ng-submit="analyzeText(text)">
+        <input ng-model="text" name="text">
+        <button type="submit">Analyzse</button>
+      </form>
+      <p>{{douglas}}</p>
+      <p>{{text}}</p>
+      <p ng-if="british">This text is 100% British</p>
+    </div>
+  </body>
 </html>

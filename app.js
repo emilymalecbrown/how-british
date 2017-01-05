@@ -1,8 +1,15 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+var routes = require('./router.js');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/', express.static(__dirname));
+app.use('/api', routes);
 
 app.set('port', (process.env.PORT || 5000));
-app.use(express.static('./public'));
 
 app.get('/', (req, res, next) => {
   res.sendfile('./browser/index.html');
