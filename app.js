@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', express.static(__dirname));
+app.use(express.static('browser'))
 app.use('/api', routes);
 
 app.set('port', (process.env.PORT || 5000));

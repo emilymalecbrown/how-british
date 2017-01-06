@@ -2,18 +2,18 @@
 <html>
   <head>
     <title>How British?</title>
+    <link href="./style.css" rel="stylesheet" />
     <script src="../node_modules/angular/angular.js" defer></script>
-    <script src="./angular/analyzer.js" defer></script>
+    <script src="../angular/app.js" defer></script>
+    <script src="../angular/analyzer.factory.js" defer></script>
+    <script src="../angular/analyzer.controller.js" defer></script>
   </head>
-  <body ng-app="analyzer">
+  <body ng-app="app">
     <div ng-controller="AnalyzerController">
-      <form ng-submit="analyzeText(text)">
-        <input ng-model="text" name="text">
-        <button type="submit">Analyzse</button>
+      <form name="form">
+        <textarea class="textbox" ng-model="text" name="text"></textarea>
+        <button class="button" type="submit" ng-click="analyzeText(text)">Analyzse</button>
       </form>
-      <p>{{douglas}}</p>
-      <p>{{text}}</p>
-      <p ng-if="british">This text is 100% British</p>
     </div>
   </body>
 </html>
