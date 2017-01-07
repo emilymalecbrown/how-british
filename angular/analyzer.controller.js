@@ -26,10 +26,8 @@ app.controller('AnalyzerController', function($scope, $state, $stateParams, Anal
     var britCount = 0;
     var americanCount = 0;
     var words = $scope.text.split(" ");
-    console.log(words)
     for (var i=0; i<words.length; i++) {
       if ($scope.britishWords.indexOf(words[i]) > -1) {
-        console.log($scope.britishWords[$scope.britishWords.indexOf(words[i])])
         britCount++;
       } else if ($scope.americanWords.indexOf(words[i]) > -1) {
         americanCount++;
