@@ -4,8 +4,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: './browser/result.html',
     params: {
       percentage: null,
-      language: null
-
+      language: null,
+      message: null
     },
     controller: 'ResultsController'
   });
@@ -14,4 +14,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
 app.controller('ResultsController', function($stateParams, $scope){
   $scope.percentage = $stateParams.percentage;
   $scope.language = $stateParams.language;
+  $scope.message = $stateParams.message;
 });
