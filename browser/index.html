@@ -4,16 +4,13 @@
     <title>How British?</title>
     <link href="./style.css" rel="stylesheet" />
     <script src="../node_modules/angular/angular.js" defer></script>
+    <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js" defer></script>
     <script src="../angular/app.js" defer></script>
     <script src="../angular/analyzer.factory.js" defer></script>
     <script src="../angular/analyzer.controller.js" defer></script>
+    <script src="../angular/results.js" defer></script>
   </head>
-  <body ng-app="app">
-    <div ng-controller="AnalyzerController">
-      <form name="form">
-        <textarea class="textbox" ng-model="text" name="text"></textarea>
-        <button class="button" type="submit" ng-click="analyzeText(text)">Analyzse</button>
-      </form>
-    </div>
+  <body>
+    <div ng-app="app" ui-view></div>
   </body>
 </html>
