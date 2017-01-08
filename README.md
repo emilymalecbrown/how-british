@@ -1,4 +1,4 @@
-# How British 🇬🇧 / 🇺🇸
+# How British 🇬🇧 | 🇺🇸
 work in progress 
 <hr> 
 Will be be able to: 
