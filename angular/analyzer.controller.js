@@ -25,14 +25,15 @@ app.controller('AnalyzerController', function($scope, $state, $stateParams, Anal
   $scope.analyzeText = function() {
     var britCount = 0;
     var americanCount = 0;
-    var words = $scope.text.split(" ");
+    var words = $scope.text.split(/\W+/);
+    console.log(words)
     $scope.languageSpecificWords = [];
 
     for (var i=0; i<words.length; i++) {
-      if ($scope.britishWords.indexOf(words[i]) > -1) {
+      if ($scope.britishWords.indexOf(words[i]) > -1 && words[i] !== "") {
         $scope.languageSpecificWords.push(words[i]);
         britCount++;
-      } else if ($scope.americanWords.indexOf(words[i]) > -1) {
+      } else if ($scope.americanWords.indexOf(words[i]) > -1 && words[i] !== "") {
         $scope.languageSpecificWords.push(words[i]);
         americanCount++;
       }
@@ -48,7 +49,10 @@ app.controller('AnalyzerController', function($scope, $state, $stateParams, Anal
     } else {
       $scope.ambiguous = "This text is confusing! It's either British or American. Maybe Canadian?";
     }
-    $state.go('result', {text: $scope.text, hitWords: $scope.languageSpecificWords, percentage: $scope.percentage, language: $scope.language, message: $scope.ambiguous});
+
+    console.log($scope.languageSpecificWords, britCount, americanCount);
+
+    $state.go('result', {text: $scope.text, hitWords: $scope.languageSpecificWords, percentage: $scope.percentage, language: $scope.language, message: $scope.ambiguous, americanWords: $scope.americanWords, britishWords: $scope.britishWords});
   };
 
 });
