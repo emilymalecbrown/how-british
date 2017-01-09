@@ -1,12 +1,9 @@
 # How British 🇬🇧 | 🇺🇸
-work in progress 
-<hr> 
-Will be be able to: 
-<ul>
-<li>Analyze the percentage of British spellings in a text</li>
-<li>Highlight significant words in the text</li>
-<li>Give users the ability to convert a text from British American spelling to US spelling</li>
-</ul>
+Todos: 
+- [x] Analyze the percentage of British spellings in a text</li>
+- [x] Highlight significant words in the text</li>
+- [ ] Give users the ability to convert a text from British American spelling to US spelling</li>
+
 <hr>
 Technologies currently using: 
 <ul>
