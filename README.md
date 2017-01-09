@@ -1,8 +1,12 @@
 # How British 🇬🇧 | 🇺🇸
 Todos: 
-- [x] Analyze the percentage of British spellings in a text</li>
-- [x] Highlight significant words in the text</li>
-- [ ] Give users the ability to convert a text from British English spelling to US spelling</li>
+- [x] Analyze the percentage of British spellings in a text
+- [x] Highlight significant words in the text
+- [x] Give users the ability to convert a text from British English spelling to US spelling
+- [ ] Give users the ability to convert a text from American English spelling to UK spelling
+- [ ] Style
+- [ ] Deploy
+- [ ] Add support for phrases (stretch)
 
 <hr>
 Technologies currently using: 
