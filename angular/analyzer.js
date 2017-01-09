@@ -7,6 +7,27 @@ app.config(function($stateProvider, $urlRouterProvider) {
   });
 });
 
+app.factory('AnalyzerFactory', function($http){
+  var AnalyzerFactory = {};
+
+  AnalyzerFactory.getBritishWords = function() {
+    return $http.get('/api/words/british')
+    .then((response) => {
+      return response.data;
+    });
+  };
+
+  AnalyzerFactory.getAmericanWords = function() {
+    return $http.get('/api/words/american')
+    .then((response) => {
+      return response.data;
+    });
+  };
+
+  return AnalyzerFactory;
+
+});
+
 app.controller('AnalyzerController', function($scope, $state, $stateParams, AnalyzerFactory) {
   $scope.britishWords;
   $scope.americanWords;
@@ -26,14 +47,13 @@ app.controller('AnalyzerController', function($scope, $state, $stateParams, Anal
     var britCount = 0;
     var americanCount = 0;
     var words = $scope.text.split(/\W+/);
-    console.log(words)
     $scope.languageSpecificWords = [];
 
     for (var i=0; i<words.length; i++) {
-      if ($scope.britishWords.indexOf(words[i]) > -1 && words[i] !== "") {
+      if ($scope.britishWords.indexOf(words[i].toLowerCase()) > -1 && words[i] !== "") {
         $scope.languageSpecificWords.push(words[i]);
         britCount++;
-      } else if ($scope.americanWords.indexOf(words[i]) > -1 && words[i] !== "") {
+      } else if ($scope.americanWords.indexOf(words[i].toLowerCase()) > -1 && words[i] !== "") {
         $scope.languageSpecificWords.push(words[i]);
         americanCount++;
       }
@@ -50,9 +70,20 @@ app.controller('AnalyzerController', function($scope, $state, $stateParams, Anal
       $scope.ambiguous = "This text is confusing! It's either British or American. Maybe Canadian?";
     }
 
-    console.log($scope.languageSpecificWords, britCount, americanCount);
+    $state.go('result', {
+      text: $scope.text,
+      hitWords: $scope.languageSpecificWords,
+      percentage: $scope.percentage,
+      language: $scope.language,
+      message: $scope.ambiguous,
+      americanWords: $scope.americanWords,
+      britishWords: $scope.britishWords
+    });
 
-    $state.go('result', {text: $scope.text, hitWords: $scope.languageSpecificWords, percentage: $scope.percentage, language: $scope.language, message: $scope.ambiguous, americanWords: $scope.americanWords, britishWords: $scope.britishWords});
+    $scope.goHome = function() {
+      $state.go('main');
+    };
+
   };
 
 });

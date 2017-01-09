@@ -77,11 +77,11 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
   }
 
   $scope.convertToUS = function() {
-    var index;
-    var min = 100;
-
+    var newText = $scope.text;
     // outer loop to loop through all british words that need replacing
     for (var i=0; i<$scope.hitWords.length; i++) {
+      var index;
+      var min = 100;
       //calculate levenshtein distance between hit words and american english words to find replacement
       for (var j=0; j<americanWords.length; j++) {
         if (levenshteinDistance($scope.hitWords[i], americanWords[j]) < min) {
@@ -89,10 +89,28 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
           index = j;
         }
       }
-      console.log(americanWords[index])
-      var newText = $scope.text.replace($scope.hitWords[i], americanWords[index])
+      newText = newText.replace($scope.hitWords[i], americanWords[index]);
     }
     $state.go('converted', {convertedText: newText});
-  }
+  };
+
+
+  $scope.convertToUK = function() {
+    var newText = $scope.text;
+    // outer loop to loop through all british words that need replacing
+    for (var i=0; i<$scope.hitWords.length; i++) {
+      var index;
+      var min = 100;
+      //calculate levenshtein distance between hit words and american english words to find replacement
+      for (var j=0; j<britishWords.length; j++) {
+        if (levenshteinDistance($scope.hitWords[i], britishWords[j]) < min) {
+          min = levenshteinDistance($scope.hitWords[i], britishWords[j]);
+          index = j;
+        }
+      }
+      newText = newText.replace($scope.hitWords[i], britishWords[index]);
+    }
+    $state.go('converted', {convertedText: newText});
+  };
 
 });
