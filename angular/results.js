@@ -82,7 +82,13 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
 
   $scope.converter = function() {
     var newText = $scope.text;
-    var convertToWords = $scope.language === "American" ? britishWords : americanWords;
+    var convertToWords;
+    
+    if (event.target.innerHTML === "Americanize"){
+      convertToWords = americanWords;
+    } else {
+      convertToWords = britishWords;
+    }
 
     // outer loop to loop through all british words that need replacing
     for (var i=0; i<$scope.hitWords.length; i++) {
