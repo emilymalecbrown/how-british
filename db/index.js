@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 
 var databaseURI = 'postgres://localhost:5432/howbritish';
 
-const db = module.exports = new Sequelize(databaseURI, {
+var db = module.exports = new Sequelize(databaseURI, {
   define: {
     timestamps: false,
     underscored: true

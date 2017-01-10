@@ -2,23 +2,23 @@ var express = require('express');
 var router = express.Router();
 var WordList = require('./db/models/words');
 
-router.get('/words', (req, res, next) => {
+router.get('/words', function(req, res, next) {
   WordList.findAll()
-  .then((words) => {
+  .then(function(words) {
     res.send(words);
   });
 });
 
-router.get('/words/british', (req, res, next) => {
+router.get('/words/british', function(req, res, next) {
   WordList.find({where: {language: 'British English'}})
-  .then((response) => {
+  .then(function(response) {
     res.send(response);
   });
 });
 
-router.get('/words/american', (req, res, next) => {
+router.get('/words/american', function(req, res, next) {
   WordList.find({where: {language: 'American English'}})
-  .then((response) => {
+  .then(function(response) {
     res.send(response);
   });
 });

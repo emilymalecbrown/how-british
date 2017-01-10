@@ -1,6 +1,6 @@
 <div ng-controller="AnalyzerController">
   <form name="form">
     <textarea class="textbox" ng-model="text" name="text"></textarea>
-    <button class="button" type="submit" ng-click="analyzeText(text)">Analyzse</button>
+    <button ng-show="form.$dirty" class="button" type="submit" ng-click="analyzeText(text)">Analyzse</button>
   </form>
 </div>

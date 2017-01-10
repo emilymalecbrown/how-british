@@ -1,6 +1,6 @@
 <div>
   <h1 ng-if="!message">This text is {{percentage}} {{language}}! Would you like to convert it?</h1>
+  <button ng-if="!message" ng-click="converter()">Convert</button><button ng-click="goHome()">Analyse Another Text</button>
   <h1 ng-if="message">{{message}}</h1>
   <p ng-bind-html="text | highlight:hitWords">{{text}}</p>
-  <button ng-if="language === 'British'" ng-click="convertToUS()">Yes</button><button ng-show="language === 'American'" ng-click="convertToUK()">Yes</button><button ng-click="goHome()">No</button>
 </div>

@@ -36,6 +36,10 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
   var britishWords = $stateParams.britishWords;
   var americanWords = $stateParams.americanWords;
 
+  $scope.goHome = function() {
+    $state.go('main', {});
+  };
+
   // Use levenshtein's algorithm to find closest word in opposed lang and replace
 
   // Copyright (c) 2011 Andrei Mackenzie
@@ -43,8 +47,8 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
   // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
   // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   function levenshteinDistance (a, b) {
-    if(a.length == 0) return b.length;
-    if(b.length == 0) return a.length;
+    if(a.length === 0) return b.length;
+    if(b.length === 0) return a.length;
 
     var matrix = [];
 
@@ -76,39 +80,22 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
     return matrix[b.length][a.length];
   }
 
-  $scope.convertToUS = function() {
+  $scope.converter = function() {
     var newText = $scope.text;
+    var convertToWords = $scope.language === "American" ? britishWords : americanWords;
+
     // outer loop to loop through all british words that need replacing
     for (var i=0; i<$scope.hitWords.length; i++) {
       var index;
       var min = 100;
-      //calculate levenshtein distance between hit words and american english words to find replacement
-      for (var j=0; j<americanWords.length; j++) {
-        if (levenshteinDistance($scope.hitWords[i], americanWords[j]) < min) {
-          min = levenshteinDistance($scope.hitWords[i], americanWords[j]);
+      //calculate levenshtein distance between hit words and dictionary words to find replacement
+      for (var j=0; j<convertToWords.length; j++) {
+        if (levenshteinDistance($scope.hitWords[i], convertToWords[j]) < min) {
+          min = levenshteinDistance($scope.hitWords[i], convertToWords[j]);
           index = j;
         }
       }
-      newText = newText.replace($scope.hitWords[i], americanWords[index]);
-    }
-    $state.go('converted', {convertedText: newText});
-  };
-
-
-  $scope.convertToUK = function() {
-    var newText = $scope.text;
-    // outer loop to loop through all british words that need replacing
-    for (var i=0; i<$scope.hitWords.length; i++) {
-      var index;
-      var min = 100;
-      //calculate levenshtein distance between hit words and american english words to find replacement
-      for (var j=0; j<britishWords.length; j++) {
-        if (levenshteinDistance($scope.hitWords[i], britishWords[j]) < min) {
-          min = levenshteinDistance($scope.hitWords[i], britishWords[j]);
-          index = j;
-        }
-      }
-      newText = newText.replace($scope.hitWords[i], britishWords[index]);
+      newText = newText.replace($scope.hitWords[i], convertToWords[index]);
     }
     $state.go('converted', {convertedText: newText});
   };
