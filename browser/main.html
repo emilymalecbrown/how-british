@@ -1,6 +1,7 @@
 <div ng-controller="AnalyzerController">
   <form name="form">
-    <textarea class="textbox" ng-model="text" name="text"></textarea>
-    <button ng-show="form.$dirty" class="button" type="submit" ng-click="analyzeText(text)">Analyzse</button>
+    <h1>How British 🇬🇧</h1>
+    <textarea class="textbox" ng-model="text" name="text" placeholder="type or paste something in here"autofocus="autofocus" required></textarea>
+    <button class="analyze" ng-show="form.$dirty" ng-disabled="form.$invalid" class="button" type="submit" ng-click="analyzeText(text)">Analyze</button>
   </form>
 </div>

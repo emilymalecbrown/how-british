@@ -9,8 +9,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
   });
 });
 
-app.controller('ConvertedTextController', function($scope, $stateParams) {
+app.controller('ConvertedTextController', function($scope, $state, $stateParams) {
 
   $scope.convertedText = $stateParams.convertedText;
+  $scope.goHome = function() {
+    $state.go('main', {}, { reload: true });
+  };
 
 });

@@ -40,6 +40,16 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
     $state.go('main', {});
   };
 
+  //some words are not reciprocal in spelling but in meaning... get rid of most of those
+  function filterHitWords() {
+    for (var i=0; i<$scope.hitWords.length; i++) {
+      if (britishWords.indexOf($scope.hitWords[i]) && americanWords.indexOf($scope.hitWords[i])) {
+        $scope.hitWords.slice(i, 1);
+      }
+    }
+    return $scope.hitWords;
+  }
+
   // Use levenshtein's algorithm to find closest word in opposed lang and replace
 
   // Copyright (c) 2011 Andrei Mackenzie
@@ -81,9 +91,11 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
   }
 
   $scope.converter = function() {
+    filterHitWords();
+
     var newText = $scope.text;
     var convertToWords;
-    
+
     if (event.target.innerHTML === "Americanize"){
       convertToWords = americanWords;
     } else {

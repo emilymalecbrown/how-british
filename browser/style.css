@@ -1,6 +1,12 @@
-body {
-  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+/*body*/
+body, h1 {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  background-color: black;
+  color: white;
 }
+
+/*form*/
 form {
   display: flex;
   flex-direction: column;
@@ -8,18 +14,131 @@ form {
   align-items: center;
 }
 .textbox {
-  margin: 0;
-  padding-bottom: 20px;
-  width: 80%;
-  height:400px;
-  font-family: sans-serif;
-  font-size: 18px;
+  color: white;
+  background-color: black;
+  margin-bottom: 20px;
+  width: 50%;
+  height: 350px;
+  font-size: 20px;
   resize: none;
   box-shadow: none;
+  border: none;
 }
 .textbox:focus {
   outline: none;
 }
+
+/*options*/
+.options {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+/*result*/
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.result > p {
+  padding: 30px;
+}
+
+/*result > match text*/
 .match {
   color: red;
+}
+
+/*converted*/
+.converted > p {
+  padding: 30px;
+}
+.converted > button {
+  margin-left: 30px;
+}
+
+/*buttons*/
+button {
+  margin: 0 20px 0 20px;
+  width: 150px;
+  padding: 10px;
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  border-radius: 2px;
+  font-size: 0.9em;
+  background-color: #fff;
+  color: #646464;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.2s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/*cursor*/
+.blinking-cursor {
+  font-weight: 400;
+  font-size: 50px;
+  color: #2E3D48;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
 }
