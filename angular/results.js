@@ -95,6 +95,7 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
 
     var newText = $scope.text;
     var convertToWords;
+    var newWords = [];
 
     if (event.target.innerHTML === "Americanize"){
       convertToWords = americanWords;
@@ -114,8 +115,9 @@ app.controller('ResultsController', function($stateParams, $scope, AnalyzerFacto
         }
       }
       newText = newText.replace($scope.hitWords[i], convertToWords[index]);
+      newWords.push(convertToWords[index]);
     }
-    $state.go('converted', {convertedText: newText});
+    $state.go('converted', {convertedText: newText, newWords: newWords});
   };
 
 });

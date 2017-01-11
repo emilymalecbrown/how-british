@@ -1,4 +1,4 @@
 <div class="converted">
-  <p>{{convertedText}}</p>
+  <p ng-bind-html="convertedText | highlight:newWords">{{convertedText}}</p>
   <button ng-click="goHome()">Analyse Another</button>
 </div>
