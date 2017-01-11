@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var WordList = require('./db/models/words');
+var WordList = require('./server/db/models/words');
 
 router.get('/words', function(req, res, next) {
   WordList.findAll()
