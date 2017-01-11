@@ -1,4 +1,5 @@
 var db = require('./db/index.js');
+var chalk = require('chalk');
 var cheerio = require('cheerio');
 var request = require('request');
 
@@ -16,7 +17,6 @@ request(url, function(error, response, html){
   var firstColumn = $('table tr .Body p').first();
   var secondColumn = $('table tr .Body p').last();
 
-  //console.log(britishWords['0'])
   firstColumn['0'].children.forEach(function(elem) {
     if (elem.data) {
       britishWords.push(elem.data.replace(/\s/g,''));
@@ -28,7 +28,7 @@ request(url, function(error, response, html){
       americanWords.push(elem.data.replace(/\s/g,''));
     }
   });
-  db.Promise.map([
+  var seedUsers = db.Promise.map([
     {language: 'British English', words: britishWords},
     {language: 'American English', words: americanWords},
   ], function(wordlist) { db.model('wordlist').create(wordlist); });
