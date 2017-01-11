@@ -4,8 +4,8 @@ Todos:
 - [x] Highlight significant words in the text
 - [x] Give users the ability to convert a text from British English spelling to US spelling
 - [x] Give users the ability to convert a text from American English spelling to UK spelling
-- [ ] Style
-- [ ] Deploy
+- [x] Style
+- [x] Deploy
 - [ ] Write tests
 - [ ] Add support for phrases (stretch)
 
