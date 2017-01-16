@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'monospaced.elastic']);
+var app = angular.module('app', ['ui.router', 'monospaced.elastic', 'ngDialog']);
 
 app.run(function ($rootScope) {
   $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {

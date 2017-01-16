@@ -27,9 +27,18 @@ app.factory('AnalyzerFactory', function($http){
   return AnalyzerFactory;
 });
 
-app.controller('AnalyzerController', function($scope, $state, $stateParams, AnalyzerFactory) {
+app.controller('AnalyzerController', function($scope, $state, $stateParams, AnalyzerFactory, ngDialog) {
   var britishWords, americanWords;
   var languageSpecificWords = [];
+
+  $scope.clickToOpen = function () {
+    ngDialog.open({
+      template: './browser/infomodal.html',
+      className: 'ngdialog-theme-default',
+      overlay:true,
+      closeByDocument: true
+    });
+  };
 
   AnalyzerFactory.getBritishWords()
   .then(function(response) {

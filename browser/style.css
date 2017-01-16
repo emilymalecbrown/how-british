@@ -11,6 +11,19 @@ h1 {
   margin-left: 25px;
 }
 
+/*modal overrides*/
+.ngdialog.ngdialog-theme-default {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 50%;
+}
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+  background: red;
+}
+
 /*form*/
 form {
   margin: 0 auto;
@@ -97,14 +110,16 @@ button:hover {
 .info {
   height: 25px;
 }
-a {
+.info > a {
   color: black;
   cursor: default;
   float: right;
   margin: 10px;
   line-height: 25px;
-
   text-decoration: none;
+}
+a:focus {
+  outline: none;
 }
 a:hover {
   color: blue;
