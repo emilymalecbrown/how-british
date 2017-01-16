@@ -2,27 +2,30 @@
 body, h1 {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  margin-left: 25px;
 }
 
 /*form*/
 form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  width: 50%;
 }
 .textbox {
-  color: white;
-  background-color: black;
-  margin-bottom: 20px;
-  width: 50%;
-  height: 350px;
-  font-size: 20px;
+  width: 100%;
+  display: block;
+  margin: 0 auto 10px auto;
+  outline: none;
   resize: none;
-  box-shadow: none;
-  border: none;
+  text-align: center;
+  font-size: 20px;
+  min-height: 200px;
+  border: 2px dotted rgb(232,17,45);
 }
 .textbox:focus {
   outline: none;
@@ -33,7 +36,6 @@ form {
   display: flex;
   justify-content: space-around;
 }
-
 
 /*result*/
 .result {
@@ -72,7 +74,7 @@ button {
   align-content: space-around;
   border-radius: 2px;
   font-size: 0.9em;
-  background-color: #fff;
+  background: white;
   color: #646464;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: 0.2s;
@@ -82,8 +84,31 @@ button:focus {
   outline: none;
 }
 button:hover {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+  background: repeating-linear-gradient(-45deg, rgba(232,17,45, .3) 0px, rgba(232,17,45, .3) 10px, rgba(0, 43, 127, .3) 10px, rgba(0, 43, 127, .3) 20px);
+  color: black;
+  transition: background, color;
+}
+.analyze {
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+/*links*/
+.info {
+  height: 25px;
+}
+a {
+  color: black;
+  cursor: default;
+  float: right;
+  margin: 10px;
+  line-height: 25px;
+
+  text-decoration: none;
+}
+a:hover {
+  color: blue;
+  transition: color .4s ease-in-out;
 }
 
 /*cursor*/

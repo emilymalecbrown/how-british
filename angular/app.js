@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'monospaced.elastic']);
 
 app.run(function ($rootScope) {
   $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
